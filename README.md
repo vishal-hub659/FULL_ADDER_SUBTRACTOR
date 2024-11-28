@@ -37,19 +37,44 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
-
-**Procedure**
+![Screenshot 2024-11-28 182934](https://github.com/user-attachments/assets/359ff0d1-a349-4462-a9bb-f09953902e61)
 
 Write the detailed procedure here
-
+~~~
 **Program:**
+module de4 (a,b,cin,sum,carry,bo,diff);
+    input a,b,cin;
+    output sum,carry,bo,diff;
+    assign sum=a^b^cin;
+    assign carry=((a^b)&cin)|(a&b);
+    assign diff=a^b^cin;
+    assign bo=((~(a^b))&cin)|(~a)&b;
+endmodule
+module de42 (df,bo,a,b,bin);
+output df;
+output bo;
+input a;
+input b;
+input bin;
+wire w1,w2,w3;
+assign w1=a^b;
+assign w2=(~a&b);
+assign w3=(~w1&bin);
+assign df=w1^bin;
+assign bo=w2|w3;
+endmodule
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: vishal s
+RegisterNumber:24008833
 */
-
+~~~
 **RTL Schematic**
+![de4](https://github.com/user-attachments/assets/52ae510f-73fe-4349-a44f-e63c19a3f4d6)
+![de42](https://github.com/user-attachments/assets/77c39acb-4d4b-409f-a30e-27068ce08249)
 
 **Output Timing Waveform**
+![de4 wave](https://github.com/user-attachments/assets/296501cf-7fe3-4e4c-8d56-2c5eb14f4868)
+![de 42 wave](https://github.com/user-attachments/assets/0e761186-6acf-404f-b644-20826a674980)
 
 **Result:**
 
